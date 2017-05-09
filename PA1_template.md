@@ -33,13 +33,6 @@ Plotting
 
 ```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.3.3
-```
-
-```r
 g<-ggplot(A1,aes(x=Steps,))
 g+geom_histogram(color="black",fill="blue",binwidth = 1000)+labs(title="Steps per day")+ylab("# Days")
 ```
@@ -147,26 +140,7 @@ DATA2$day<-weekdays(DATA2$date,abbreviate = T)
 DATA2$day_type<-ifelse(DATA2$day=="Sat","weekend",ifelse(DATA2$day=="Sun","weekend","weekday"))
 
 library(dplyr)
-```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 A4<-setNames(aggregate(DATA2[,1],list(DATA2$interval,DATA2$day_type),mean),c("Interval","Weekday","Steps"))
 ```
 
@@ -175,13 +149,6 @@ A4<-setNames(aggregate(DATA2[,1],list(DATA2$interval,DATA2$day_type),mean),c("In
 
 ```r
 library(reshape2)
-```
-
-```
-## Warning: package 'reshape2' was built under R version 3.3.3
-```
-
-```r
 g3<-ggplot(A4,aes(x=Interval,y=Steps,shape = Weekday ))
 
 g3+geom_line()+facet_grid(facets=Weekday~.)
